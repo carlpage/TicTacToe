@@ -34,7 +34,7 @@ gulp.task('scripts', function () {
     gulp.src(['./dev/scripts/**.js', '!./dist/js/*/min.js'])
         .pipe(plumber(plumberErrorHandler))
         .pipe(rename({ suffix: '.min' }))
-        // .pipe(stripDebug())
+        .pipe(stripDebug())
         .pipe(babel({ presets: ['env'] }))
         .pipe(uglify().on('error', function (err) {
             gutil.log(gutil.colors.red('[Error]'), err.toString());

@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log('in js');
 
     var origBoard;
     const huPlayer = 'O';
