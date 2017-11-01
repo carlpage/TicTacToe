@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     stripDebug = require('gulp-strip-debug'),
     uglify = require('gulp-uglify'),
+    babel = require('gulp-babel'),
     rename = require('gulp-rename'),
     plumber = require('gulp-plumber'),
     gutil = require('gulp-util'),
@@ -34,6 +35,7 @@ gulp.task('scripts', function () {
         .pipe(plumber(plumberErrorHandler))
         .pipe(rename({ suffix: '.min' }))
         // .pipe(stripDebug())
+        .pipe(babel({ presets: ['env'] }))
         .pipe(uglify().on('error', function (err) {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
             this.emit('end');
