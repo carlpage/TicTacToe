@@ -33,7 +33,6 @@ $(document).ready(function() {
             turn(square.target.id, huPlayer);
             if (!checkTie()) turn(bestSpot(), aiPlayer);
         }
-
     }
 
     function turn(squareId, player) {
@@ -142,7 +141,6 @@ $(document).ready(function() {
         }
         return moves[bestMove];
     }
-
 
     $('.replay').on('click', function() {
         startGame();
