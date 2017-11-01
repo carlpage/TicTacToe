@@ -1,6 +1,8 @@
 # Tic Tac Toe
 
-A Tic Tac Toe game I built using:
+A Tic Tac Toe game using the minimax algorithm
+
+Technologies used:
 * ES6
 * jQuery
 * Gulp

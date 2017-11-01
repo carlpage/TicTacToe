@@ -20,7 +20,7 @@ $(document).ready(function() {
     function startGame() {
         $('.endGame').css("display: none");
         origBoard = Array.from(Array(9).keys());
-        for(var i = 0; i < cells.length; i++) {
+        for(let i = 0; i < cells.length; i++) {
             cells[i].innerText = '';
             cells[i].style.removeProperty('background-color');
             cells[i].addEventListener('click', turnClick, false);
@@ -29,7 +29,11 @@ $(document).ready(function() {
 
     function turnClick(square) {
         console.log(square.target.id);
-        turn(square.target.id, huPlayer);
+        if(typeof origBoard[square.target.id] == 'number') {
+            turn(square.target.id, huPlayer);
+            if (!checkTie()) turn(bestSpot(), aiPlayer);
+        }
+
     }
 
     function turn(squareId, player) {
@@ -46,7 +50,7 @@ $(document).ready(function() {
             (e === player) ? a.concat(i) : a, []);
         let gameWon = null;
         for(let [index, win] of winCombos.entries()) {
-            if(win.every(elem => plays.indexOf(elem > -1))) {
+            if(win.every(elem => plays.indexOf(elem )> -1)) {
                 gameWon = {index: index, player: player};
                 break;
             }
@@ -59,10 +63,39 @@ $(document).ready(function() {
             document.getElementById(index).style.backgroundColor = 
             gameWon.player == huPlayer ? 'blue' : 'red';
         }
-        for(var i = 0; i < cells.length; i++) {
+        for(let i = 0; i < cells.length; i++) {
             cells[i].removeEventListener('click', turnClick, false);
         }
+        declareWinner(gameWon.player == huPlayer ? "You Win!" : "You Lose.")
     }
+
+    function declareWinner(who) {
+        document.querySelector('.endGame').style.display = 'block';
+        document.querySelector('.endGame .text').innerText = who;
+
+    }
+
+    function emptySquares() {
+        return origBoard.filter(s => typeof s == 'number');
+    }
+
+    function bestSpot() {
+        return emptySquares()[0];
+    }
+
+    function checkTie() {
+        if(emptySquares().length == 0) {
+            for(let i = 0; i < cells.length; i++) {
+                cells[i].backgoundColor = 'green';
+                cells[i].removeEventListener('click', turnClick, false);
+            }
+            declareWinner('Tie Game!');
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     $('.replay').on('click', function() {
         startGame();
