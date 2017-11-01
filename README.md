@@ -7,6 +7,7 @@ Technologies used:
 * jQuery
 * Gulp
 * Sass
+* Bower
 
 I coded it as part of the front end development section within the FreeCodeCamp(https://freecodecamp.com) curriculum. 
 
