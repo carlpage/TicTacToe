@@ -4,6 +4,56 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: #47A8BD;
     color: white;
+    margin: 0 auto;
+}
+
+.chooseMarker {
+    position: relative;
+    top: 5rem;
+    opacity: .95;
+    width: 480px;
+    height: 480px;
+    background-color: #232020;
+    color: black;
+    margin: 0 auto;
+    border-radius: 10px; 
+    padding-top: 2rem;
+    @media(max-width: $sm) {
+        width: 345px;
+        padding-top: 1rem !important;
+    }
+    p {
+        font-size: 3rem;
+        text-align: center;
+        color: white;
+    }
+    a {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        font-size: 6rem;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: middle;
+        transform: translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -moz-osx-font-smoothing: grayscale;
+        transition-duration: 0.3s;
+        transition-property: transform;
+        &:hover,
+        :focus,
+        :active {
+            transform: scale(1.1);
+        }
+        &:nth-child(2) {
+            margin-left: 1rem;
+        }
+    }
+}
+
+.choices {
+    display: block;
+    text-align: center;
 }
 
 td {
@@ -16,6 +66,7 @@ td {
 }
 
 table {
+    display: none;
     border-collapse: collapse;
     position: relative;
     margin: 0 auto;
@@ -30,7 +81,6 @@ table {
         &:first-child {
             td {
                 border-top: 0;
-
             }
         }
         &:last-child {

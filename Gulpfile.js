@@ -1,18 +1,18 @@
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    browserSync = require('browser-sync').create(),
-    cleanCSS = require('gulp-clean-css'),
-    notify = require('gulp-notify'),
-    imagemin = require('gulp-imagemin'),
-    stripDebug = require('gulp-strip-debug'),
-    uglify = require('gulp-uglify'),
-    babel = require('gulp-babel'),
-    rename = require('gulp-rename'),
-    plumber = require('gulp-plumber'),
-    gutil = require('gulp-util'),
-    autoprefixer = require('gulp-autoprefixer');
+const gulp = require('gulp'),
+      sass = require('gulp-sass'),
+      browserSync = require('browser-sync').create(),
+      cleanCSS = require('gulp-clean-css'),
+      notify = require('gulp-notify'),
+      imagemin = require('gulp-imagemin'),
+      stripDebug = require('gulp-strip-debug'),
+      uglify = require('gulp-uglify'),
+      babel = require('gulp-babel'),
+      rename = require('gulp-rename'),
+      plumber = require('gulp-plumber'),
+      gutil = require('gulp-util'),
+      autoprefixer = require('gulp-autoprefixer');
 
-var plumberErrorHandler = {
+const plumberErrorHandler = {
     errorHandler: notify.onError({
         title: 'Gulp',
         message: 'Error: <%= error.message %>'
