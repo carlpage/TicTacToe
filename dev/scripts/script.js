@@ -45,7 +45,7 @@ $(document).ready(function () {
         console.log(square.target.id);
         if (typeof origBoard[square.target.id] == "number") {
             turn(square.target.id, huPlayer);
-            if (!checkTie()) turn(bestSpot(), aiPlayer);
+            if (!checkTie()) setTimeout(function () { turn(bestSpot(), aiPlayer)}, 500);
         }
     }
 
